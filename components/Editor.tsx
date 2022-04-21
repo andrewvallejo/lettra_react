@@ -1,5 +1,19 @@
-import styles from '../styles/editor.module.css'
+import styles from '../styles/editor.module.scss'
 
-export default function Editor ({children}: {children: any}){
-	return <div className={styles.container}>{children}</div>
+export default function Editor (){
+	return (
+		<section className={styles.container}>
+			<header>
+				<h1 className={styles.heading}>Lettra</h1>
+			</header>
+			<div className={styles.editor}>
+				<textarea
+					id='textEditor'
+					name='textEditor'
+					className={styles.textEditor}
+					placeholder='Paste your cover letter here'
+				/>
+			</div>
+		</section>
+	)
 }
