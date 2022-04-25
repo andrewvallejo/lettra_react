@@ -7,8 +7,26 @@ export default function Editor (){
 	const [text, setText] = useState('')
 	const [words, setWords] = useState<object[]>([])
 	const [textUI, setTextUI] = useState('')
+	const [currentWord, setCurrentWord] = useState('')
 
-	useEffect(() => {})
+	useEffect(
+		() => {
+			const indices = words.length
+			const word = currentWord.split(' ').join('')
+
+			const newWord = {
+				string: word,
+				index: indices + 1
+			}
+
+			if (currentWord) {
+				setWords([...words, newWord])
+				setText(textUI)
+				setCurrentWord('')
+			}
+		},
+		[textUI, words, currentWord]
+	)
 
 	/*
 			- textUI
@@ -26,31 +44,25 @@ export default function Editor (){
 							- Reset all of strings indices going from 0 UP
 	*/
 
-	const formWord = (letters: string) => {
-		const indices = words.length
-		const word = letters.split(' ').join('')
+	// const formWord = (letters: string) => {
+	// 	const indices = words.length
+	// 	const word = letters.split(' ').join('')
 
-		return {
-			string: word,
-			index: indices + 1
-		}
-	}
+	// 	return {
+	// 		string: word,
+	// 		index: indices + 1
+	// 	}
+	// }
 
 	const handleChange = (event: {target: {value: SetStateAction<string>}}) => {
-		const char = event.target.value
-		const currChar = textUI[textUI.length - 1]
-		const emptySpace = ' '
-
+		const char = event.target.value as string
+		const currChar = char[char.length - 1]
+		const space = ' '
 		setTextUI(char)
 
-		let difference = textUI.split(' ').filter((char: string) => !text.split(' ').includes(char)).join('')
-
-		if (currChar === emptySpace && difference.length >= 1) {
-			const newWord = formWord(difference)
-			setWords([...words, newWord])
-			setText(textUI)
+		if (currChar === space) {
+			setCurrentWord(textUI.split(' ').filter((char: string) => !text.split(' ').includes(char)).join(''))
 		}
-		console.log(words)
 	}
 
 	return (
