@@ -28,41 +28,15 @@ export default function Editor (){
 		[textUI, words, currentWord]
 	)
 
-	/*
-			- textUI
-	X			- User's input updates *textUI, which is also the value that displays the on DOM
-	X		- If there is a space, then add last word of the string to *text
-					- Last word should be then turned into an object with string/index number
-			-Iterate through words & Iterate through Text
-				- Check to see if string and index match
-				- If index match, and string doesnt: replace with new string
-				- If string matches, but index doesn't
-						- Reset all of strings indices going from 0 UP
-					- If both don't match, then check if the last word index is one less than the text
-					- If it is one less, add new word to the end of array
-					- If index is more than one off, then
-							- Reset all of strings indices going from 0 UP
-	*/
-
-	// const formWord = (letters: string) => {
-	// 	const indices = words.length
-	// 	const word = letters.split(' ').join('')
-
-	// 	return {
-	// 		string: word,
-	// 		index: indices + 1
-	// 	}
-	// }
-
 	const handleChange = (event: {target: {value: SetStateAction<string>}}) => {
 		const char = event.target.value as string
 		const currChar = char[char.length - 1]
 		const space = ' '
-		setTextUI(char)
-
 		if (currChar === space) {
 			setCurrentWord(textUI.split(' ').filter((char: string) => !text.split(' ').includes(char)).join(''))
 		}
+
+		setTextUI(char)
 	}
 
 	return (
@@ -83,3 +57,28 @@ export default function Editor (){
 		</section>
 	)
 }
+
+/*
+			- textUI
+	X			- User's input updates *textUI, which is also the value that displays the on DOM
+	X		- If there is a space, then add last word of the string to *text
+					- Last word should be then turned into an object with string/index number
+			-Iterate through words & Iterate through Text
+				- Check to see if string and index match
+				- If index match, and string doesnt: replace with new string
+				- If string matches, but index doesn't
+						- Reset all of strings indices going from 0 UP
+					- If both don't match, then check if the last word index is one less than the text
+					- If it is one less, add new word to the end of array
+					- If index is more than one off, then
+							- Reset all of strings indices going from 0 UP
+	*/
+
+// const formWord = (letters: string) => {
+// 	const indices = words.length
+// 	const word = letters.split(' ').join('')
+
+// 	return {
+// 		string: word,
+// 		index: indices + 1
+// 	}
