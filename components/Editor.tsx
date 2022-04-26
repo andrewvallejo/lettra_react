@@ -3,7 +3,11 @@ import {getWord, getLastWord} from '../lib/editor'
 
 import styles from '../styles/editor.module.scss'
 
+import {useEditorContext} from '../context/EditorContext'
+
 export default function Editor (){
+	// Need to fix (Guess is its a TS type issue)
+	const [editorState, setEditorState] = useEditorContext()
 	const [text, setText] = useState('')
 	const [words, setWords] = useState<object[]>([])
 	const [textUI, setTextUI] = useState('')
