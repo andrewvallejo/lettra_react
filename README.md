@@ -48,7 +48,15 @@ Do this to each word you would like to swap out for another easily. You only nee
  I would love to work at \OmniBark\ because...
 ```
 
-Select OmniBark from the Wordiable Table, or edit the word without removing the `\` (in any order), which will update the appearances of all the other words that are the same. If you replace `\OmniBark\` with `\UniMeows\` will automatically change `I would love to work at OmniBark because `I would love to work at UniMeows because...`
+Select OmniBark from the Wordiable Table, or edit the word without removing the `\` (in any order), which will update the appearances of all the other words that are the same. If you replace `\OmniBark\` with `\UniMeows\` will automatically change the document from 
+
+`Dear OmbiBark Hirer, I would love to work at OmniBark because...`
+
+to
+
+`Dear UniMeow Hirer, I would love to work at UniMeow because...`
+ 
+ all within the time it took for you to spell out `UniMeow`
 
 ## Wireframe
 
