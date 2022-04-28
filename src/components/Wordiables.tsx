@@ -1,3 +1,3 @@
-export default function Wordiables ({children}: {children: any}){
-	return <div>{children}</div>
+export default function Wordiables ({ children }: { children: any }){
+	return <div>{children}</div>;
 }

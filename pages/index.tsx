@@ -1,12 +1,12 @@
+import Head from "next/head";
+
+import Editor from "../src/components/Editor";
+import Layout from "../src/components/Layout";
+import { Logo } from "../src/components/logo";
+import Nav from "../src/components/Nav";
+import styles from "../styles/Home.module.scss";
+
 import type { NextPage } from 'next'
-import Head from 'next/head'
-
-import styles from '../styles/Home.module.scss'
-import Editor from '../src/components/Editor'
-import Nav from '../src/components/Nav'
-import Layout from '../src/components/Layout'
-import { Logo } from '../src/components/logo'
-
 
 const Home: NextPage = () => {
   return (

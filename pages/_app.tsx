@@ -1,7 +1,8 @@
-import '../styles/globals.scss'
-import type { AppProps } from 'next/app'
-import { WordiablesWrapper } from '../src/context/wordiablesContext'
+import "../styles/globals.scss";
 
+import { WordiablesWrapper } from "../src/context/wordiablesContext";
+
+import type { AppProps } from 'next/app'
 function App({ Component, pageProps }: AppProps) {
   return(
     <WordiablesWrapper>

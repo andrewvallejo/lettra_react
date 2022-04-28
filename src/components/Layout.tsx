@@ -1,8 +1,8 @@
-import Head from 'next/head';
+import Head from "next/head";
 
-import styles from '../../styles/Home.module.scss';
+import styles from "../../styles/Home.module.scss";
 
-export default function Layout ({children}: {children: any}){
+export default function Layout ({ children }: { children: any }){
 	return (
 		<div className={styles.container}>
 			<Head>

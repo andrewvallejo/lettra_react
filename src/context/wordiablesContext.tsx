@@ -1,6 +1,7 @@
-import {createContext, useContext, useMemo, useState} from 'react';
-import {IWordiables} from '../../types';
-import {wordiables} from './wordiables';
+import { createContext, useContext, useMemo, useState } from "react";
+
+import { IWordiables } from "../../types";
+import { wordiables } from "./wordiables";
 
 type WordiablesContextProviderProps = {
 	children: React.ReactNode;
@@ -8,14 +9,14 @@ type WordiablesContextProviderProps = {
 
 const WordiablesContext = createContext<IWordiables>(wordiables);
 
-export function WordiablesWrapper ({children}: WordiablesContextProviderProps){
-	const [wordiablesState, setWordiablesState] = useState<IWordiables>(wordiables);
+export function WordiablesWrapper ({ children }: WordiablesContextProviderProps){
+	const [ wordiablesState, setWordiablesState ] = useState<IWordiables>(wordiables);
 
 	const contextValue: any = useMemo(
 		() => {
-			return [wordiablesState, setWordiablesState];
+			return [ wordiablesState, setWordiablesState ];
 		},
-		[wordiablesState, setWordiablesState]
+		[ wordiablesState, setWordiablesState ]
 	);
 
 	return <WordiablesContext.Provider value={contextValue}>{children}</WordiablesContext.Provider>;
