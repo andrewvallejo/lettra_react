@@ -16,9 +16,5 @@ export default function Layout ({children}: {children: any}){
 			</Head>
 			<main className={styles.main}>{children}</main>
 		</div>
-<<<<<<< HEAD:src/components/Layout.tsx
 	);
-=======
-	)
->>>>>>> 68ba53257d7d01cefa262a86a9d058a80dec244b:components/Layout.tsx
 }
