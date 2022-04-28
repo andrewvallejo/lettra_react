@@ -1,14 +1,14 @@
 import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
-import { EditorWrapper } from '../context/EditorContext'
+import { WordiablesWrapper } from '../src/context/wordiablesContext'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return(
-    <EditorWrapper>
+    <WordiablesWrapper>
       <Component {...pageProps} />
-    </EditorWrapper>
+    </WordiablesWrapper>
     )
 
 }
 
-export default MyApp
+export default App
