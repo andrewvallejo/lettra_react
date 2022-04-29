@@ -1,15 +1,15 @@
 import { SetStateAction, useEffect, useState } from "react";
 
 import styles from "../../styles/editor.module.scss";
+import { IWord } from "../../types";
+import { useWordiablesContext } from "../context/wordiablesContext";
 import { updateWordIndices } from "../lib/editor";
 
 export default function Editor (){
-	// TS BUG: both items in array are throwing off tslinter
-	// TS Report: Type 'object' is not an array type.ts(2461)
-	// const [wordiablesState, setWordiablesState] = useWordiablesContext();
+	const [ wordiablesState, setWordiablesState ] = Object.values(useWordiablesContext());
 
 	const [ text, setText ] = useState<string>("");
-	const [ words, setWords ] = useState<object[]>([]);
+	const [ words, setWords ] = useState<IWord[]>([]);
 	const [ textUI, setTextUI ] = useState<string>("");
 	const [ currentWord, setCurrentWord ] = useState<string>("");
 
@@ -22,7 +22,13 @@ export default function Editor (){
 			const updatedWords = updateWordIndices(value);
 			setWords(updatedWords);
 		}
-
+		if (words.length > 0) {
+			words.forEach((word) => {
+				if (word.tagged === true) {
+					console.log(word);
+				}
+			});
+		}
 		setTextUI(value);
 	};
 
