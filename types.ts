@@ -1,14 +1,15 @@
 export interface IWord {
 	string: string;
 	index: number;
+	tagged: boolean;
 }
 
 export interface IWordiables {
-	one: object;
-	two: object;
-	three: object;
-	four: object;
-	five: object;
-	six: object;
-	seven: object;
+	one: IWord;
+	two: IWord;
+	three: IWord;
+	four: IWord;
+	five: IWord;
+	six: IWord;
+	seven: IWord;
 }
