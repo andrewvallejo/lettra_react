@@ -24,9 +24,10 @@ export default function Editor (){
 		}
 		if (words.length > 0) {
 			words.forEach((word) => {
-				if (word.tagged === true) {
-					console.log(word);
-				}
+				setText(word.string);
+				// if (word.tagged === true) {
+				// 	console.log(word);
+				// }
 			});
 		}
 		setTextUI(value);
@@ -42,10 +43,13 @@ export default function Editor (){
 					id='textEditor'
 					name='textEditor'
 					className={styles.textEditor}
-					placeholder='Paste your cover letter here'
 					value={textUI}
+					placeholder='Paste your cover letter here'
 					onChange={handleChange}
 				/>
+				<div className={styles.liveEditor}>
+					<p className={styles.text}>{textUI}</p>
+				</div>
 			</div>
 		</section>
 	);
