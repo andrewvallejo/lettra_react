@@ -12,7 +12,7 @@
 
 ## Installation
 
-You can visit [Lettra's website](https:lettra.vercel.app) or clone the repo.
+You can visit [Lettra's website](https://lettra.vercel.app) or clone the repo.
 
 1. Clone the repo and update the dependency with your package manager preference (*yarn, pnpm, etc.*)
 
