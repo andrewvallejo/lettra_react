@@ -1,7 +1,7 @@
 import { SetStateAction, useEffect, useState } from "react";
 
 import styles from "../../styles/editor.module.scss";
-import { IWord } from "../../types";
+import { updateWordIndices } from "../lib/editor";
 
 export default function Editor (){
 	// TS BUG: both items in array are throwing off tslinter
@@ -13,34 +13,17 @@ export default function Editor (){
 	const [ textUI, setTextUI ] = useState<string>("");
 	const [ currentWord, setCurrentWord ] = useState<string>("");
 
-	useEffect(
-		() => {
-			const indices: number = words.length;
-			const word: string = currentWord.split(" ").join("");
-
-			const newWord: IWord = {
-				string: word,
-				index: indices
-			};
-
-			if (currentWord) {
-				setWords([ ...words, newWord ]);
-				setText(textUI);
-				setCurrentWord("");
-			}
-		},
-		[ textUI, words, currentWord ]
-	);
-
 	const handleChange = (event: { target: { value: SetStateAction<string> } }) => {
-		const char = event.target.value as string;
-		const currChar = char[char.length - 1];
-		const space = " ";
-		if (currChar === space) {
-			setCurrentWord(textUI.split(" ").filter((char: string) => !text.split(" ").includes(char)).join(""));
+		const { value } = event.target as HTMLTextAreaElement;
+		const lastChar = value[value.length - 1];
+		const charMarkers = [ ".", "?", "!", ",", ";", ":", " " ];
+
+		if (charMarkers.includes(lastChar)) {
+			const updatedWords = updateWordIndices(value);
+			setWords(updatedWords);
 		}
 
-		setTextUI(char);
+		setTextUI(value);
 	};
 
 	return (
