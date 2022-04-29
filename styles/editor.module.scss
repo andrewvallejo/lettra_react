@@ -32,11 +32,38 @@
 }
 
 .textEditor {
-	width: 100%;
 	border: none;
+	width: 100%;
 	min-height: 75%;
 	resize: none;
 	outline: none;
 	font-size: larger;
-	color: $wordiableOne;
+}
+
+.wordiableOne {
+	@include colorWheel('one');
+}
+
+.wordiableTwo {
+	@include colorWheel('two');
+}
+
+.wordiableThree {
+	@include colorWheel('three');
+}
+
+.wordiableFour {
+	@include colorWheel('four');
+}
+
+.wordiableFive {
+	@include colorWheel('five');
+}
+
+.wordiableSix {
+	@include colorWheel('six');
+}
+
+.wordiableSeven {
+	@include colorWheel('seven');
 }

@@ -1,0 +1,19 @@
+@mixin colorWheel($color) {
+	@if $color == 'one' {
+		color: $wordiableOne;
+	} @else if $color == 'two' {
+		color: $wordiableTwo;
+	} @else if $color == 'three' {
+		color: $wordiableThree;
+	} @else if $color == 'four' {
+		color: $wordiableFour;
+	} @else if $color == 'five' {
+		color: $wordiableFive;
+	} @else if $color == 'six' {
+		color: $wordiableSix;
+	} @else if $color == 'seven' {
+		color: $wordiableSeven;
+	} @else {
+		color: $wordiableOne;
+	}
+}
