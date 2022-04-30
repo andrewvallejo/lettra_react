@@ -1,8 +1,5 @@
+import styles from "../../styles/editor.module.scss";
 import { IWord } from "../../types";
-
-// This will run every time a new word is added to state in order to detect any words changes
-
-// If there are any changes in the word state then this will run to update all of the words to the correct indices
 
 export const updateWordIndices = (value: string): IWord[] => {
 	const words = value.trim().split(" ").filter((word) => word.length);
@@ -27,4 +24,15 @@ const checkForSlash = (word: any) => {
 		word.tagged = true;
 	}
 	return word;
+};
+
+export const stringToElement = (string: IWord[]) => {
+	return string.map((word, index) => {
+		return (
+			<span key={index} className={word.tagged ? styles.text : ""}>
+				{" "}
+				{word.string}
+			</span>
+		);
+	});
 };
