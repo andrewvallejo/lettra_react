@@ -2,13 +2,14 @@ import { SetStateAction, useEffect, useRef, useState } from "react";
 
 import styles from "../../styles/editor.module.scss";
 import { IWord } from "../../types";
-import { useWordiablesContext } from "../context/wordiablesContext";
+import { UseWordiablesContext } from "../context/wordiablesContext";
 import { stringToElement, updateWordIndices } from "../lib/editor";
 
 export default function Editor (){
-	const [ wordiablesState, setWordiablesState ] = Object.values(useWordiablesContext());
+	const [ wordiablesState, setWordiablesState ] = Object.values(UseWordiablesContext());
 	const [ words, setWords ] = useState<IWord[]>([]);
 	const [ textUI, setTextUI ] = useState<string>("");
+	const { wordiables } = wordiablesState;
 
 	const editorRef = useRef<HTMLTextAreaElement>(null);
 
@@ -25,7 +26,9 @@ export default function Editor (){
 		const charMarkers = [ ".", "?", "!", ",", ";", ":", " " ];
 
 		if (charMarkers.includes(lastChar)) {
-			setWords(updateWordIndices(value));
+			setWords(updateWordIndices(value, wordiables.length));
+			// Need to first iterate through words to find tagged words.
+			// setWordiablesState({ ...wordiablesState, wordiables: [ ...wordiables] });
 		}
 
 		setTextUI(value);
@@ -47,7 +50,7 @@ export default function Editor (){
 					onChange={handleChange}
 				/>
 
-				<div className={styles.liveEditor}>{stringToElement(words)}</div>
+				<div className={styles.liveEditor}>{stringToElement(words, wordiables)}</div>
 			</div>
 		</section>
 	);
