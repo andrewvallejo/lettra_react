@@ -22,6 +22,6 @@ export function WordiablesWrapper ({ children }: WordiablesContextProviderProps)
 	return <WordiablesContext.Provider value={contextValue}>{children}</WordiablesContext.Provider>;
 }
 
-export function useWordiablesContext (){
+export function UseWordiablesContext (){
 	return useContext(WordiablesContext);
 }
