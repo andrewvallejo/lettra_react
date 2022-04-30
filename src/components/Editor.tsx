@@ -1,17 +1,23 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
 
 import styles from "../../styles/editor.module.scss";
 import { IWord } from "../../types";
 import { useWordiablesContext } from "../context/wordiablesContext";
-import { updateWordIndices } from "../lib/editor";
+import { stringToElement, updateWordIndices } from "../lib/editor";
 
 export default function Editor (){
 	const [ wordiablesState, setWordiablesState ] = Object.values(useWordiablesContext());
-
-	const [ text, setText ] = useState<string>("");
 	const [ words, setWords ] = useState<IWord[]>([]);
 	const [ textUI, setTextUI ] = useState<string>("");
-	const [ currentWord, setCurrentWord ] = useState<string>("");
+
+	const editorRef = useRef<HTMLTextAreaElement>(null);
+
+	useEffect(
+		() => {
+			!textUI && (setTextUI(""), setWords([]));
+		},
+		[ textUI ]
+	);
 
 	const handleChange = (event: { target: { value: SetStateAction<string> } }) => {
 		const { value } = event.target as HTMLTextAreaElement;
@@ -19,17 +25,9 @@ export default function Editor (){
 		const charMarkers = [ ".", "?", "!", ",", ";", ":", " " ];
 
 		if (charMarkers.includes(lastChar)) {
-			const updatedWords = updateWordIndices(value);
-			setWords(updatedWords);
+			setWords(updateWordIndices(value));
 		}
-		if (words.length > 0) {
-			words.forEach((word) => {
-				setText(word.string);
-				// if (word.tagged === true) {
-				// 	console.log(word);
-				// }
-			});
-		}
+
 		setTextUI(value);
 	};
 
@@ -40,16 +38,16 @@ export default function Editor (){
 			</header>
 			<div className={styles.editor}>
 				<textarea
+					ref={editorRef}
+					value={textUI}
 					id='textEditor'
 					name='textEditor'
 					className={styles.textEditor}
-					value={textUI}
 					placeholder='Paste your cover letter here'
 					onChange={handleChange}
 				/>
-				<div className={styles.liveEditor}>
-					<p className={styles.text}>{textUI}</p>
-				</div>
+
+				<div className={styles.liveEditor}>{stringToElement(words)}</div>
 			</div>
 		</section>
 	);
