@@ -28,7 +28,11 @@ export default function Editor (){
 		if (charMarkers.includes(lastChar)) {
 			setWords(updateWordIndices(value, wordiables.length));
 			// Need to first iterate through words to find tagged words.
-			// setWordiablesState({ ...wordiablesState, wordiables: [ ...wordiables] });
+			words.forEach((word) => {
+				if (word.isWordiable && !wordiablesState.wordiables.includes(word.string)) {
+					setWordiablesState({ ...wordiablesState, wordiables: [ ...wordiables, word.string ] });
+				}
+			});
 		}
 
 		setTextUI(value);
