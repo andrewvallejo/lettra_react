@@ -6,7 +6,7 @@ type WordiablesContextProviderProps = {
 
 const wordiables: object[] = [];
 
-const WordiablesContext = createContext(wordiables);
+const WordiablesContext = createContext([]);
 
 export function WordiablesWrapper ({ children }: WordiablesContextProviderProps){
 	const [ wordiablesState, setWordiablesState ] = useState<object[]>(wordiables);
