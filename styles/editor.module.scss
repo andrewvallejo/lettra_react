@@ -22,53 +22,60 @@
 }
 
 .editor {
+	position: relative;
 	height: 100%;
 	width: 100%;
 	background: #fff;
 	overflow-y: auto;
 	padding: 1rem;
+	.textEditor {
+		border: none;
+		width: 100%;
+		resize: none;
+		outline: none;
+		color: transparent;
+	}
+	.liveEditor {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		.text {
+			position: absolute;
+			top: .2rem;
+			left: 1.1255rem;
+			color: #000;
+		}
+	}
 }
 
-.textEditor {
-	border: none;
-	width: 100%;
-	resize: none;
-	outline: none;
-}
+.wordiable {
+	&.one {
+		@include colorWheel('one');
+	}
 
-.liveEditor {
-	position: absolute;
-	inset: 2.4rem;
-	left: 2.88rem;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-}
+	&.two {
+		@include colorWheel('two');
+	}
 
-.wordiableOne {
-	@include colorWheel('one');
-}
+	&.three {
+		@include colorWheel('three');
+	}
 
-.wordiableTwo {
-	@include colorWheel('two');
-}
+	&.four {
+		@include colorWheel('four');
+	}
 
-.wordiableThree {
-	@include colorWheel('three');
-}
+	&.five {
+		@include colorWheel('five');
+	}
 
-.wordiableFour {
-	@include colorWheel('four');
-}
+	&.six {
+		@include colorWheel('six');
+	}
 
-.wordiableFive {
-	@include colorWheel('five');
-}
-
-.wordiableSix {
-	@include colorWheel('six');
-}
-
-.wordiableSeven {
-	@include colorWheel('seven');
+	&.seven {
+		@include colorWheel('seven');
+	}
 }
