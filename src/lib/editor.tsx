@@ -1,5 +1,3 @@
-import { useContext } from "react";
-
 import styles from "../../styles/editor.module.scss";
 import { IWord } from "../../types";
 
@@ -25,7 +23,6 @@ const getWordiableClass = (wordPlacement: number) => {
 };
 
 export const updateWordIndices = (value: string, totalWordiables: number): IWord[] => {
-	console.log(totalWordiables);
 	const words = value.trim().split(" ").filter((word) => word.length);
 	const wordiables: IWord[] = [];
 
