@@ -1,5 +1,3 @@
-import { wordiables } from "./src/context/wordiables";
-
 export interface IWord {
 	string: string;
 	index: number;
