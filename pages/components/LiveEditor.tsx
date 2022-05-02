@@ -1,5 +1,9 @@
 import styles from "../../styles/editor.module.scss";
 
 export default function LiveEditor ({ children }: { children: any }){
-	return <p className={styles.liveEditor}>{children}</p>;
+	return (
+		<div className={styles.liveEditor}>
+			<p>{children}</p>
+		</div>
+	);
 }

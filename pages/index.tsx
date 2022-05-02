@@ -1,16 +1,15 @@
 import Head from "next/head";
 
-import Editor from "../src/components/Editor";
-import Layout from "../src/components/Layout";
-import { Logo } from "../src/components/logo";
-import Nav from "../src/components/Nav";
 import styles from "../styles/Home.module.scss";
+import Editor from "./components/Editor";
+import { Logo } from "./components/logo";
+import Nav from "./components/Nav";
 
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Lettra</title>
         <meta name="description" content="Cover Letter Time Saver" />
@@ -20,13 +19,13 @@ const Home: NextPage = () => {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Layout>
         <Nav>
           <Logo />
         </Nav>
-        <Editor/>
-      </Layout>
-    </div>
+        <main className={styles.main}>
+          <Editor/>
+        </main>
+    </>
   )
 }
 
