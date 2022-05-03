@@ -21,5 +21,5 @@ export default function LiveEditor ({ text }: { text: any }){
 		[ text, setWordiables, wordiables ]
 	);
 
-	return <div className={styles.liveEditor}>{parseText(text)}</div>;
+	return <div className={styles.liveEditor}>{parseText(text, wordiables)}</div>;
 }
