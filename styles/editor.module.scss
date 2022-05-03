@@ -27,13 +27,12 @@
 	width: 100%;
 	background: #fff;
 	overflow-y: auto;
-	padding: 1rem;
 	.textEditor {
+		padding: 1rem;
 		border: none;
 		width: 100%;
 		resize: none;
 		outline: none;
-		color: transparent;
 	}
 	.liveEditor {
 		position: absolute;
@@ -43,9 +42,8 @@
 		pointer-events: none;
 		.text {
 			position: absolute;
-			top: .2rem;
-			left: 1.1255rem;
-			color: #000;
+			top: .01rem;
+			left: 1rem;
 		}
 	}
 }
