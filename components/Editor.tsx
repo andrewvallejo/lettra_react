@@ -1,6 +1,6 @@
 import { SetStateAction, useEffect, useRef, useState } from "react";
 
-import styles from "../../styles/editor.module.scss";
+import styles from "../styles/editor.module.scss";
 import LiveEditor from "./LiveEditor";
 
 export default function Editor (){
