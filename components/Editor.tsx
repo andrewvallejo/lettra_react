@@ -20,7 +20,7 @@ export default function Editor (){
 					placeholder='Paste your cover letter here'
 					onChange={(e) => setText(e.target.value)}
 				/>
-				<LiveEditor>{text}</LiveEditor>
+				<LiveEditor text={text} />
 			</div>
 		</section>
 	);
