@@ -1,10 +1,19 @@
 import { SetStateAction, useEffect, useRef, useState } from "react";
 
+import { trim } from "../lib/editor";
 import styles from "../styles/editor.module.scss";
 import LiveEditor from "./LiveEditor";
 
 export default function Editor (){
 	const [ text, setText ] = useState("");
+
+	useEffect(
+		() => {
+			const cleanText = trim(text);
+			setText(cleanText);
+		},
+		[ text ]
+	);
 
 	return (
 		<section className={styles.container}>
