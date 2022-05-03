@@ -11,3 +11,20 @@ const convertStringToHTML = (words: string[]) => {
 	}, "");
 	return <p className={styles.text}>{text}</p>;
 };
+
+export const searchForWordiables = (text: string): boolean => {
+	const isWordiable = searchForBackslashes(text);
+	if (isWordiable) {
+		return true;
+	}
+	return false;
+};
+
+const searchForBackslashes = (text: string) => {
+	const hasBackslash = text.startsWith("\\");
+	const hasBackslashBehind = text.endsWith("\\");
+	if (hasBackslash && hasBackslashBehind && text.length > 1) {
+		return true;
+	}
+	return false;
+};
