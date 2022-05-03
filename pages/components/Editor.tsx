@@ -1,12 +1,9 @@
 import { SetStateAction, useEffect, useRef, useState } from "react";
 
-import { UseWordiablesContext } from "../../context/wordiablesContext";
 import styles from "../../styles/editor.module.scss";
 import LiveEditor from "./LiveEditor";
 
-// import { stringToElement } from "../lib/editor";
 export default function Editor (){
-	const [ wordiablesState, setWordiablesState ] = Object.values(UseWordiablesContext());
 	const [ text, setText ] = useState("");
 
 	return (
