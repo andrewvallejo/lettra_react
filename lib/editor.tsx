@@ -1,15 +1,24 @@
 import styles from "../styles/editor.module.scss";
 
-export const parseText = (text: string) => {
+export const parseText = (text: string, wordiables: string[]) => {
 	const words = text.split(" ");
-	return convertStringToHTML(words);
+	const elements = convertStringToHTML(words, wordiables);
+	console.log("👾: parseText -> elements", elements);
+	return elements;
 };
 
-const convertStringToHTML = (words: string[]) => {
-	const text = words.reduce((phrase, word) => {
-		return `${phrase} ${word}`;
-	}, "");
-	return <p className={styles.text}>{text}</p>;
+const convertStringToHTML = (words: string[], wordiables: string[]) => {
+	return words.map((word: string) => {
+		const isWordiable = wordiables.includes(word);
+
+		return isWordiable ? (
+			<span className={styles.wordiable} key={word}>
+				{`${word} `}
+			</span>
+		) : (
+			`${word} `
+		);
+	});
 };
 
 export const searchForWordiables = (text: string): boolean => {
