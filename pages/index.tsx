@@ -6,7 +6,6 @@ import { Logo } from "./components/Logo";
 import Nav from "./components/Nav";
 
 import type { NextPage } from 'next'
-
 const Home: NextPage = () => {
   return (
     <>
