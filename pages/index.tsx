@@ -1,9 +1,9 @@
 import Head from "next/head";
 
+import Editor from "../components/Editor";
+import { Logo } from "../components/Logo";
+import Nav from "../components/Nav";
 import styles from "../styles/Home.module.scss";
-import Editor from "./components/Editor";
-import { Logo } from "./components/Logo";
-import Nav from "./components/Nav";
 
 import type { NextPage } from 'next'
 const Home: NextPage = () => {
