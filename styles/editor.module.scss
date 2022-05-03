@@ -51,6 +51,7 @@
 }
 
 .wordiable {
+	color: pink;
 	&.one {
 		@include colorWheel('one');
 	}
