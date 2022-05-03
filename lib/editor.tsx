@@ -37,3 +37,5 @@ const searchForBackslashes = (text: string) => {
 	}
 	return false;
 };
+
+export const trim = (text: string) => text.replace(/  +/g, " ");
