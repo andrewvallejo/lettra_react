@@ -40,38 +40,39 @@
 		inset: 0;
 		width: 100%;
 		height: 100%;
-		padding: 1rem;
 		pointer-events: none;
+		p {
+			padding-inline-start: 1rem;
+			position: absolute;
+			inset: 0;
+		}
 	}
 }
 
-.wordiable {
-	color: pink;
-	&.one {
-		@include colorWheel('one');
-	}
+.one {
+	@include colorWheel('one');
+}
 
-	&.two {
-		@include colorWheel('two');
-	}
+.two {
+	@include colorWheel('two');
+}
 
-	&.three {
-		@include colorWheel('three');
-	}
+.three {
+	@include colorWheel('three');
+}
 
-	&.four {
-		@include colorWheel('four');
-	}
+.four {
+	@include colorWheel('four');
+}
 
-	&.five {
-		@include colorWheel('five');
-	}
+.five {
+	@include colorWheel('five');
+}
 
-	&.six {
-		@include colorWheel('six');
-	}
+.six {
+	@include colorWheel('six');
+}
 
-	&.seven {
-		@include colorWheel('seven');
-	}
+.seven {
+	@include colorWheel('seven');
 }
