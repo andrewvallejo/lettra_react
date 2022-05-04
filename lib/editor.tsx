@@ -3,22 +3,25 @@ import styles from "../styles/editor.module.scss";
 export const parseText = (text: string, wordiables: string[]) => {
 	const words = text.split(" ");
 	const elements = convertStringToHTML(words, wordiables);
-	console.log("👾: parseText -> elements", elements);
-	return elements;
+
+	return <p>{elements}</p>;
 };
 
 const convertStringToHTML = (words: string[], wordiables: string[]) => {
-	return words.map((word: string) => {
-		const isWordiable = wordiables.includes(word);
-
-		return isWordiable ? (
-			<span className={styles.wordiable} key={word}>
-				{`${word} `}
-			</span>
-		) : (
-			`${word} `
-		);
+	const wordiablesClasses = [ "one", "two", "three", "four", "five", "six", "seven" ];
+	const elements = words.map((word, index) => {
+		if (wordiables.includes(word)) {
+			return (
+				<span key={index} className={styles[wordiablesClasses[wordiables.indexOf(word)]]}>
+					{`${word} `}
+				</span>
+			);
+		} else {
+			return `${word} `;
+		}
 	});
+
+	return elements;
 };
 
 export const searchForWordiables = (text: string): boolean => {
