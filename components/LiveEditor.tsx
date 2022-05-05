@@ -5,17 +5,23 @@ import { checkWordiableStatus, parseText } from "../lib/editor";
 import styles from "../styles/editor.module.scss";
 
 export default function LiveEditor ({ text }: { text: any }){
-	const [ wordiables, setWordiables ] = useState<string[]>([]);
 	const { wordiablesContext, setWordiablesContext } = UseWordiablesContext();
 
 	useEffect(
 		() => {
 			if (text) {
+				const liveWordiables: string[] = [];
+
 				text.split(" ").forEach((word: string) => {
 					const isWordiable: boolean = checkWordiableStatus(word);
-					if (isWordiable && !wordiablesContext.includes(word)) {
-						setWordiablesContext([ ...wordiablesContext, word ]);
+
+					if (isWordiable && !liveWordiables.includes(word)) {
+						liveWordiables.push(word);
+					} else if (!isWordiable && liveWordiables.includes(word)) {
+						liveWordiables.splice(liveWordiables.indexOf(word), 1);
 					}
+
+					setWordiablesContext(liveWordiables);
 				});
 			}
 		},
