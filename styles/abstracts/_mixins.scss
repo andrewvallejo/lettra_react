@@ -1,19 +1,55 @@
 @mixin colorWheel($color) {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		top: 1.4rem;
+		left: .05rem;
+		z-index: 0;
+		border-radius: 5px;
+		width: calc(100% - .1rem);
+		height: .1rem;
+		opacity: .9;
+	}
 	@if $color == 'one' {
 		color: $wordiableOne;
+		&::after {
+			background: $wordiableOne;
+		}
 	} @else if $color == 'two' {
 		color: $wordiableTwo;
+		&::after {
+			background: $wordiableTwo;
+		}
 	} @else if $color == 'three' {
 		color: $wordiableThree;
+		&::after {
+			background: $wordiableThree;
+		}
 	} @else if $color == 'four' {
 		color: $wordiableFour;
+		&::after {
+			background: $wordiableFour;
+		}
 	} @else if $color == 'five' {
 		color: $wordiableFive;
+		&::after {
+			background: $wordiableFive;
+		}
 	} @else if $color == 'six' {
 		color: $wordiableSix;
+		&::after {
+			background: $wordiableSix;
+		}
 	} @else if $color == 'seven' {
 		color: $wordiableSeven;
+		&::after {
+			background: $wordiableSeven;
+		}
 	} @else {
 		color: $wordiableOne;
+		&::after {
+			background: $wordiableOne;
+		}
 	}
 }
