@@ -5,17 +5,21 @@ type WordiablesContextProviderProps = {
 };
 
 const WordiablesContext = createContext<{
-	wordiables: string[];
-	setWordiables: React.Dispatch<React.SetStateAction<string[]>>;
+	wordiablesContext: string[];
+	setWordiablesContext: React.Dispatch<React.SetStateAction<string[]>>;
 }>({
-	wordiables: [],
-	setWordiables: () => {}
+	wordiablesContext: [],
+	setWordiablesContext: () => {}
 });
 
 export const WordiablesWrapper = ({ children }: WordiablesContextProviderProps) => {
-	const [ wordiables, setWordiables ] = useState<string[]>([]);
+	const [ wordiablesContext, setWordiablesContext ] = useState<string[]>([]);
 
-	return <WordiablesContext.Provider value={{ wordiables, setWordiables }}>{children}</WordiablesContext.Provider>;
+	return (
+		<WordiablesContext.Provider value={{ wordiablesContext, setWordiablesContext }}>
+			{children}
+		</WordiablesContext.Provider>
+	);
 };
 
 export const UseWordiablesContext = () => {

@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 
 import { UseWordiablesContext } from "../context/wordiablesContext";
-import { parseText, searchForWordiables } from "../lib/editor";
+import { checkWordiableStatus, parseText } from "../lib/editor";
 import styles from "../styles/editor.module.scss";
 
 export default function LiveEditor ({ text }: { text: any }){
-	const { wordiables, setWordiables } = UseWordiablesContext();
+	const [ wordiables, setWordiables ] = useState<string[]>([]);
+	const { wordiablesContext, setWordiablesContext } = UseWordiablesContext();
 
 	useEffect(
 		() => {
 			if (text) {
 				text.split(" ").forEach((word: string) => {
-					const isWordiable: boolean = searchForWordiables(word);
-					if (isWordiable && !wordiables.includes(word)) {
-						setWordiables([ ...wordiables, word ]);
+					const isWordiable: boolean = checkWordiableStatus(word);
+					if (isWordiable && !wordiablesContext.includes(word)) {
+						setWordiablesContext([ ...wordiablesContext, word ]);
 					}
 				});
 			}
 		},
-		[ text, setWordiables, wordiables ]
+		[ text, wordiablesContext, setWordiablesContext ]
 	);
 
-	return <div className={styles.liveEditor}>{parseText(text, wordiables)}</div>;
+	return <div className={styles.liveEditor}>{parseText(text, wordiablesContext)}</div>;
 }

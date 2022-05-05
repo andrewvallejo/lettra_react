@@ -24,7 +24,7 @@ const convertStringToHTML = (words: string[], wordiables: string[]) => {
 	return elements;
 };
 
-export const searchForWordiables = (text: string): boolean => {
+export const checkWordiableStatus = (text: string): boolean => {
 	const isWordiable = searchForBackslashes(text);
 	if (isWordiable) {
 		return true;
