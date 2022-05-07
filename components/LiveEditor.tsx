@@ -12,9 +12,8 @@ export default function LiveEditor ({ text }: { text: any }){
 			if (text) {
 				const liveWordiables: string[] = [];
 
-				text.split(" ").forEach((word: string) => {
+				text.split(/(\s+)/).forEach((word: string) => {
 					const isWordiable: boolean = checkWordiableStatus(word);
-
 					if (isWordiable && !liveWordiables.includes(word)) {
 						liveWordiables.push(word);
 					} else if (!isWordiable && liveWordiables.includes(word)) {
