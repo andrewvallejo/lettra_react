@@ -12,7 +12,7 @@ export default function LiveEditor ({ text }: { text: any }){
 			if (text) {
 				const liveWordiables: string[] = [];
 
-				text.split(/(\s+)/).forEach((word: string) => {
+				text.split(" ").forEach((word: string) => {
 					const isWordiable: boolean = checkWordiableStatus(word);
 					if (isWordiable && !liveWordiables.includes(word)) {
 						liveWordiables.push(word);
