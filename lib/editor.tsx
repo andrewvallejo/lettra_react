@@ -10,6 +10,9 @@ export const parseText = (text: string, wordiables: string[]) => {
 const convertStringToHTML = (words: string[], wordiables: string[]) => {
 	const wordiablesClasses = [ "one", "two", "three", "four", "five", "six", "seven" ];
 	const elements = words.map((word, index) => {
+		if (word === "") {
+			return <span key={index}>&nbsp;</span>;
+		}
 		if (wordiables.includes(word)) {
 			return (
 				<span key={index} className={styles[wordiablesClasses[wordiables.indexOf(word)]]}>
@@ -40,5 +43,3 @@ const searchForBackslashes = (text: string) => {
 	}
 	return false;
 };
-
-export const trim = (text: string) => text.replace(/  +/g, " ");
