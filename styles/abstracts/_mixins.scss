@@ -3,13 +3,13 @@
 	&::after {
 		content: '';
 		position: absolute;
+		z-index: 0;
 		top: 1.3rem;
 		left: .05rem;
-		z-index: 0;
+		opacity: .9;
 		border-radius: 5px;
 		width: calc(100% - .1rem);
 		height: .09rem;
-		opacity: .9;
 	}
 	@if $color == 'one' {
 		color: $wordiableOne;

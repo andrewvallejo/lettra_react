@@ -1,8 +1,10 @@
+@import './styles.scss';
+
 .nav {
+	position: absolute;
+	inset: 0;
 	display: flex;
 	width: 100%;
 	height: 5rem;
-	background: #c4c4c4;
-	position: absolute;
-	inset: 0;
+	background: $light-clr-ii;
 }
