@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { UseWordiablesContext } from "../context/wordiablesContext";
 import { checkWordiableStatus, parseText } from "../lib/editor";
@@ -6,6 +6,8 @@ import styles from "../styles/editor.module.scss";
 
 export default function LiveEditor ({ text }: { text: any }){
 	const { wordiablesContext, setWordiablesContext } = UseWordiablesContext();
+
+	const memoWordiables = useMemo(() => wordiablesContext, [ wordiablesContext ]);
 
 	useEffect(
 		() => {
@@ -28,5 +30,7 @@ export default function LiveEditor ({ text }: { text: any }){
 		[ text, wordiablesContext, setWordiablesContext ]
 	);
 
-	return <div className={styles.liveEditor}>{parseText(text, wordiablesContext)}</div>;
+	const liveText = parseText(text, memoWordiables);
+
+	return <div className={styles.liveEditor}>{liveText}</div>;
 }

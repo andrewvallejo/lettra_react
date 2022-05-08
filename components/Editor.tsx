@@ -1,4 +1,6 @@
-import { SetStateAction, useEffect, useRef, useState } from "react";
+import "normalize.css/normalize.css";
+
+import { SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "../styles/editor.module.scss";
 import LiveEditor from "./LiveEditor";
@@ -20,8 +22,9 @@ export default function Editor (){
 					placeholder='Paste your cover letter here'
 					onChange={(e) => setText(e.target.value)}
 				/>
-				<LiveEditor text={text} />
+				<LiveEditor text={useMemo(() => text, [ text ])} />
 			</div>
 		</section>
 	);
 }
+//2808 ms  Total <- without memoization
