@@ -1,6 +1,6 @@
 import "normalize.css/normalize.css";
 
-import { SetStateAction, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
 import styles from "../styles/editor.module.scss";
 import LiveEditor from "./LiveEditor";

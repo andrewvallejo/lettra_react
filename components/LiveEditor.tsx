@@ -8,6 +8,7 @@ export default function LiveEditor ({ text }: { text: any }){
 	const { wordiablesContext, setWordiablesContext } = UseWordiablesContext();
 
 	const memoWordiables = useMemo(() => wordiablesContext, [ wordiablesContext ]);
+	const liveText = parseText(text, memoWordiables);
 
 	useEffect(
 		() => {
@@ -29,8 +30,6 @@ export default function LiveEditor ({ text }: { text: any }){
 		},
 		[ text, wordiablesContext, setWordiablesContext ]
 	);
-
-	const liveText = parseText(text, memoWordiables);
 
 	return <div className={styles.liveEditor}>{liveText}</div>;
 }
