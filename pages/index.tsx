@@ -12,6 +12,8 @@ const Home: NextPage = () => {
       <Head>
         <title>Lettra</title>
         <meta name="description" content="Cover Letter Time Saver" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="language" content="en" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -29,3 +31,4 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
