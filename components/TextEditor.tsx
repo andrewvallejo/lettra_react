@@ -22,4 +22,3 @@ export default function TextEditor ({ children }: { children: React.ReactNode })
 		</article>
 	);
 }
-//2808 ms  Total <- without memoization
