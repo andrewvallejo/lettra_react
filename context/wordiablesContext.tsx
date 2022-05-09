@@ -5,25 +5,29 @@ type WordiablesContextProviderProps = {
 };
 
 const WordiablesContext = createContext<{
+	textContext: string;
 	wordiablesContext: string[];
 	setWordiablesContext: React.Dispatch<React.SetStateAction<string[]>>;
+	setTextContext: React.Dispatch<React.SetStateAction<string>>;
 }>({
+	textContext: "",
 	wordiablesContext: [],
-	setWordiablesContext: () => {}
+	setWordiablesContext: () => {},
+	setTextContext: () => {}
 });
 
 export const WordiablesWrapper = ({ children }: WordiablesContextProviderProps) => {
 	const [ wordiablesContext, setWordiablesContext ] = useState<string[]>([]);
-
-	return (
-		<WordiablesContext.Provider value={{ wordiablesContext, setWordiablesContext }}>
-			{children}
-		</WordiablesContext.Provider>
-	);
+	const [ textContext, setTextContext ] = useState<string>("");
+	const context = useMemo(() => ({ textContext, wordiablesContext, setWordiablesContext, setTextContext }), [
+		textContext,
+		wordiablesContext,
+		setWordiablesContext,
+		setTextContext
+	]);
+	return <WordiablesContext.Provider value={context}>{children}</WordiablesContext.Provider>;
 };
 
 export const UseWordiablesContext = () => {
-	const context = useContext(WordiablesContext);
-
-	return useMemo(() => context, [ context ]);
+	return useContext(WordiablesContext);
 };
