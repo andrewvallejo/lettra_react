@@ -1,4 +1,4 @@
-import styles from "../styles/nav.module.scss";
+import styles from "../styles/Home.module.scss";
 
 export default function Nav ({ children }: { children: any }){
 	return <div className={styles.nav}>{children}</div>;
