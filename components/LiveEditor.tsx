@@ -4,16 +4,13 @@ import { UseWordiablesContext } from "../context/wordiablesContext";
 import { checkWordiableStatus, parseText } from "../lib/editor";
 import styles from "../styles/editor.module.scss";
 
-export default function LiveEditor ({ text }: { text: any }){
-	const { wordiablesContext, setWordiablesContext } = UseWordiablesContext();
-
-	const memoWordiables = useMemo(() => wordiablesContext, [ wordiablesContext ]);
-	const liveText = parseText(text, memoWordiables);
+export default function LiveEditor (){
+	const { wordiablesContext, setWordiablesContext, textContext } = UseWordiablesContext();
 
 	useEffect(
 		() => {
 			const liveWordiables: string[] = [];
-			text.split(" ").forEach((word: string) => {
+			textContext.split(" ").forEach((word: string) => {
 				const isWordiable: boolean = checkWordiableStatus(word);
 				if (isWordiable && !liveWordiables.includes(word)) {
 					liveWordiables.push(word);
@@ -23,8 +20,8 @@ export default function LiveEditor ({ text }: { text: any }){
 				setWordiablesContext(liveWordiables);
 			});
 		},
-		[ text, wordiablesContext, setWordiablesContext ]
+		[ textContext, wordiablesContext, setWordiablesContext ]
 	);
 
-	return <div className={styles.liveEditor}>{liveText}</div>;
+	return <article className={styles.liveEditor}>{parseText(textContext, wordiablesContext)}</article>;
 }
