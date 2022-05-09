@@ -12,21 +12,16 @@ export default function LiveEditor ({ text }: { text: any }){
 
 	useEffect(
 		() => {
-			if (text) {
-				const liveWordiables: string[] = [];
-
-				text.split(" ").forEach((word: string) => {
-					const isWordiable: boolean = checkWordiableStatus(word);
-
-					if (isWordiable && !liveWordiables.includes(word)) {
-						liveWordiables.push(word);
-					} else if (!isWordiable && liveWordiables.includes(word)) {
-						liveWordiables.splice(liveWordiables.indexOf(word), 1);
-					}
-
-					setWordiablesContext(liveWordiables);
-				});
-			}
+			const liveWordiables: string[] = [];
+			text.split(" ").forEach((word: string) => {
+				const isWordiable: boolean = checkWordiableStatus(word);
+				if (isWordiable && !liveWordiables.includes(word)) {
+					liveWordiables.push(word);
+				} else if (!isWordiable && liveWordiables.includes(word)) {
+					liveWordiables.splice(liveWordiables.indexOf(word), 1);
+				}
+				setWordiablesContext(liveWordiables);
+			});
 		},
 		[ text, wordiablesContext, setWordiablesContext ]
 	);
