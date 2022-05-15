@@ -10,7 +10,7 @@ export default function TextEditor ({ children }: { children: React.ReactNode })
 	const { textContext, setTextContext, setWordiablesContext } = useEditorContext();
 
 	useEffect(() => {
-		const wordiables = textContext.match(wordiableRegex);
+		const wordiables: RegExpMatchArray | null = textContext.match(wordiableRegex);
 		if (wordiables) {
 			setWordiablesContext(wordiables);
 		}
