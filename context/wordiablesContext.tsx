@@ -1,10 +1,10 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
-type WordiablesContextProviderProps = {
+type editorContextProviderProps = {
 	children: React.ReactNode;
 };
 
-const WordiablesContext = createContext<{
+const EditorContext = createContext<{
 	textContext: string;
 	wordiablesContext: string[];
 	setWordiablesContext: React.Dispatch<React.SetStateAction<string[]>>;
@@ -16,7 +16,7 @@ const WordiablesContext = createContext<{
 	setTextContext: () => {}
 });
 
-export const WordiablesWrapper = ({ children }: WordiablesContextProviderProps) => {
+export const WordiablesWrapper = ({ children }: editorContextProviderProps) => {
 	const [ wordiablesContext, setWordiablesContext ] = useState<string[]>([]);
 	const [ textContext, setTextContext ] = useState<string>("");
 	const context = useMemo(() => ({ textContext, wordiablesContext, setWordiablesContext, setTextContext }), [
@@ -25,9 +25,9 @@ export const WordiablesWrapper = ({ children }: WordiablesContextProviderProps) 
 		setWordiablesContext,
 		setTextContext
 	]);
-	return <WordiablesContext.Provider value={context}>{children}</WordiablesContext.Provider>;
+	return <EditorContext.Provider value={context}>{children}</EditorContext.Provider>;
 };
 
-export const UseWordiablesContext = () => {
-	return useContext(WordiablesContext);
+export const useEditorContext = () => {
+	return useContext(EditorContext);
 };
