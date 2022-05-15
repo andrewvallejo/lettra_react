@@ -1,6 +1,6 @@
 import styles from "../styles/editor.module.scss";
 
-export const wordiableRegex = /.?^\\.[^,.?!;:|\\n]*\\$/i;
+export const wordiableRegex = /.?^\\.[^,.?!;:|\\n]*\\$/gi;
 
 export const stringToJSX = (text: string, wordiables: string[]) => {
 	return text.split(" ").map((word, index) => {
