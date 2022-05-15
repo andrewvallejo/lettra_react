@@ -2,9 +2,9 @@ import "normalize.css/normalize.css";
 
 import { useEffect, useMemo, useState } from "react";
 
-import { UseWordiablesContext } from "../context/wordiablesContext";
-import { wordiableRegex } from "../lib/editor";
-import styles from "../styles/editor.module.scss";
+import { UseWordiablesContext } from "../../context/wordiablesContext";
+import { wordiableRegex } from "../../lib/editor";
+import styles from "../../styles/editor.module.scss";
 
 export default function TextEditor ({ children }: { children: React.ReactNode }){
 	const { textContext, setTextContext, setWordiablesContext, wordiablesContext } = UseWordiablesContext();

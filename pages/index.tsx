@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import Editor from "../components/Editor";
+import Editor from "../components/editor/Editor";
 import { Logo } from "../components/Logo";
 import Nav from "../components/Nav";
 import styles from "../styles/Home.module.scss";
