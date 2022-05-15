@@ -1,45 +1,20 @@
 import styles from "../styles/editor.module.scss";
 
-export const parseText = (text: string, wordiables: string[]) => {
-	const words = text.split(" ");
-	const elements = convertStringToHTML(words, wordiables);
+export const wordiableRegex = /.?\\.[^,.?!;:|\\n]*\\/gi;
 
-	return <p>{elements}</p>;
-};
+export const stringToJSX = (text: string, wordiables: string[]) => {
+	// if wordiable, return span with wordiable class (classNames are styles.one to styles.seven)
+	// if not wordiable, then just return the string
 
-const convertStringToHTML = (words: string[], wordiables: string[]) => {
-	const wordiablesClasses = [ "one", "two", "three", "four", "five", "six", "seven" ];
-	const elements = words.map((word, index) => {
-		if (word === "") {
-			return <span key={index}>&nbsp;</span>;
-		}
-		if (wordiables.includes(word)) {
+	return text.split(" ").map((word, index) => {
+		if (word.match(wordiableRegex)) {
 			return (
-				<span key={index} className={styles[wordiablesClasses[wordiables.indexOf(word)]]}>
-					{`${word} `}
+				<span className={styles.one} key={index}>
+					{word + " "}
 				</span>
 			);
 		} else {
-			return `${word} `;
+			return word + " ";
 		}
 	});
-
-	return elements;
-};
-
-export const checkWordiableStatus = (text: string): boolean => {
-	const isWordiable = searchForBackslashes(text);
-	if (isWordiable) {
-		return true;
-	}
-	return false;
-};
-
-const searchForBackslashes = (text: string) => {
-	const hasBackslash = text.startsWith("\\");
-	const hasBackslashBehind = text.endsWith("\\");
-	if (hasBackslash && hasBackslashBehind && text.length > 1) {
-		return true;
-	}
-	return false;
 };
