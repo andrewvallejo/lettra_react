@@ -1,12 +1,13 @@
 import "normalize.css/normalize.css";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 
 import { useEditorContext } from "../../context/wordiablesContext";
 import { wordiableRegex } from "../../lib/editor";
 import styles from "../../styles/editor.module.scss";
+import LiveEditor from "./LiveEditor";
 
-export default function TextEditor ({ children }: { children: React.ReactNode }){
+export default function TextEditor (){
 	const { textContext, setTextContext, setWordiablesContext } = useEditorContext();
 
 	useEffect(() => {
@@ -26,7 +27,7 @@ export default function TextEditor ({ children }: { children: React.ReactNode })
 				placeholder='Paste your cover letter here'
 				onChange={(e) => setTextContext(e.target.value)}
 			/>
-			{children}
+			<LiveEditor />
 		</article>
 	);
 }
