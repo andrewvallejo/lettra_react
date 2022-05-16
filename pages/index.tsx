@@ -3,13 +3,11 @@ import Head from "next/head";
 import Editor from "../components/editor/Editor";
 import { Logo } from "../components/Logo";
 import Nav from "../components/Nav";
-import { useEditorContext } from "../context/wordiablesContext";
-import { stringToJSX } from "../lib/editor";
 import styles from "../styles/Home.module.scss";
 
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+
 const Home: NextPage = () => {
-  const { wordiablesContext, textContext } = useEditorContext();
 
   return (
     <>
@@ -28,9 +26,7 @@ const Home: NextPage = () => {
           <Logo />
         </Nav>
         <main className={styles.main}>
-          <Editor>
-            {stringToJSX(textContext, wordiablesContext)}
-          </Editor>
+          <Editor />
         </main>
     </>
   )
