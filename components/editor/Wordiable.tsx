@@ -1,24 +1,29 @@
 import { useEditorContext } from "../../context/wordiablesContext";
 import styles from "../../styles/editor.module.scss";
 
-export default function Wordiable ({ children }: { children: React.ReactNode }){
+export default function Wordiable ({ children }: { children: any }){
 	const { textContext, setTextContext, setWordiablesContext } = useEditorContext();
 
-	// handleClick to change word variable to another word
-	const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-		e.preventDefault();
-		const word = e.currentTarget.innerText;
-		const newText = textContext.replace(word, word.replace(/\w/gi, "Text In"));
-		setTextContext(newText);
-		setWordiablesContext([]);
+	const handleClick = (event: { target: { value: any } }) => {
+		const word = event.target.value;
+		const newText = textContext.replace(children, word);
+		if (newText !== textContext) {
+			setTextContext(newText);
+			setWordiablesContext([]);
+		}
 	};
 
 	return (
-		<form>
-			<button className={styles.one} onClick={handleClick}>
-				{`${children} `}
-			</button>
-			<input type='text' name='word' />
-		</form>
+		<span className={styles.editorForm}>
+			<button className={styles.wordiableButton}>{`${children} `}</button>
+			<input
+				id='wordiableInput'
+				type='text'
+				name='word'
+				className={styles.wordiableInput}
+				defaultValue={children}
+				onChange={handleClick}
+			/>
+		</span>
 	);
 }
