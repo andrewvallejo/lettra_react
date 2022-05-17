@@ -14,11 +14,10 @@
 	padding-inline: 1.75rem;
 	padding-block-end: 1.75rem;
 	background: $light-clr-ii;
-}
-
-.heading {
-	margin: 0;
-	color: $light-clr-i;
+	.heading {
+		margin: 0;
+		color: $light-clr-i;
+	}
 }
 
 .editor {
@@ -43,27 +42,43 @@
 		height: 100%;
 		padding-inline: .98rem;
 		pointer-events: none;
-	}
-}
+		.wordiables {
+			.one {
+				@include colorWheel('one');
+			}
+			.two {
+				@include colorWheel('two');
+			}
+			.three {
+				@include colorWheel('three');
+			}
+			.four {
+				@include colorWheel('four');
+			}
+			.five {
+				@include colorWheel('five');
+			}
+			.six {
+				@include colorWheel('six');
+			}
+			.seven {
+				@include colorWheel('seven');
+			}
+		}
+		.editorForm {
+			position: relative;
 
-.one {
-	@include colorWheel('one');
-}
-.two {
-	@include colorWheel('two');
-}
-.three {
-	@include colorWheel('three');
-}
-.four {
-	@include colorWheel('four');
-}
-.five {
-	@include colorWheel('five');
-}
-.six {
-	@include colorWheel('six');
-}
-.seven {
-	@include colorWheel('seven');
+			.wordiableButton {
+				@include colorWheel('one');
+			}
+
+			.wordiableInput {
+				background: red;
+				position: absolute;
+				inset: -.02rem 0;
+				opacity: .5;
+				width: 100%;
+			}
+		}
+	}
 }
