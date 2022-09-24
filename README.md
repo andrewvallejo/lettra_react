@@ -6,7 +6,7 @@
  
 </div> 
  
-> [Lettra](https://lettra.vercel.app) is a means for job seekers to reduce the time it takes to write a cover letter by selecting keywords to turn into variables, thus **effortlessly** changing _all_ occurrences of any words. 
+> [Lettra](https://lettra-react.vercel.app) is a means for job seekers to reduce the time it takes to write a cover letter by selecting keywords to turn into variables, thus **effortlessly** changing _all_ occurrences of any words. 
 <div align='right'>
  
  <sub>**_Application is currently in its alpha stage_**. </sub>
@@ -55,7 +55,7 @@
 
 ## Installation
 
-You can visit [Lettra's website](https://lettra.vercel.app) or clone the repo.
+You can visit [Lettra's website](https://lettra-react.vercel.app) or clone the repo.
 
 1. Clone the repo and update the dependency with your preferred package manager. <sub>(*yarn, pnpm, etc.*)</sub>
 
