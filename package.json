@@ -2,6 +2,7 @@
 	"name": "lettra",
 	"version": "0.1.0",
 	"private": true,
+	"packageManager": "pnpm@10.24.0",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
@@ -13,7 +14,7 @@
 			"brace-expansion": "1.1.22",
 			"braces": "3.0.3",
 			"flatted": "3.4.2",
-			"immutable": "4.3.9",
+			"sass>immutable": "5.1.8",
 			"js-yaml": "4.3.2",
 			"json5": "1.0.2",
 			"minimatch": "3.1.4",
